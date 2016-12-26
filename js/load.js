@@ -12,7 +12,17 @@ var loadState = {
 
         //Load your images, spritesheets, bitmaps...
         game.load.image('boiler-logo', 'assets/img/boilerplate-logo.png');
+        game.load.image('kondo-logo', 'assets/img/KONDO-LOGO-copy.png');
+        game.load.image('ship', 'assets/img/nave 4.png');
+        game.load.image('bullet', 'assets/img/new_bullet.png');
+        game.load.image('starfield', 'assets/img/stars.jpg');
+        game.load.image('bg-menu', 'assets/img/Inicio.png');
+        game.load.image('start', 'assets/img/start.png');
+        game.load.image('highScore', 'assets/img/hight score.png');
 
+        game.load.spritesheet('bala', 'assets/img/balas/balas_1.png', 15, 15);
+        game.load.spritesheet('balaEnemigo', 'assets/img/balas/balas_4.png', 15, 15);
+        game.load.spritesheet('enemy', 'assets/img/invader.png', 45, 36 );
 
         //Load your sounds, efx, music...
         //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
