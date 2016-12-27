@@ -158,6 +158,8 @@ function enemyFires () {
       firingTimer = game.time.now + 1000;
     } else if (score > 7000){
       firingTimer = game.time.now + 700;
+    } else if (score > 10000){
+      firingTimer = game.time.now + 400;
     }else {
       firingTimer = game.time.now + 2000;
     }

@@ -2,7 +2,7 @@ var menuState = {
 
     create: function () {
         // game.add.plugin(Phaser.Plugin.Debug);
-        game.add.image(0, 0, 'bg-menu');
+        var background = game.add.image(0, 0, 'bg-menu');
 
         //start Button
         const start_btn = game.add.button(0, game.world.centerY-38, 'start', ()=>{game.state.start('level1')});
