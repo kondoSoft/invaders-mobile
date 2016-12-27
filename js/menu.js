@@ -1,31 +1,35 @@
-var start;
-
 var menuState = {
 
     create: function () {
-        // var initGame = game.add.text(100 ,game.world.centerY,' Start Game', { font: '40px helvetica', fill: '#fff' });
-        // var highScore = game.add.text(100 ,game.world.centerY+100,' High Score', { font: '40px helvetica', fill: '#fff' });
-
         // game.add.plugin(Phaser.Plugin.Debug);
         game.add.image(0, 0, 'bg-menu');
-        start = game.add.image(0, 330, 'start');
-        game.add.image(0, 400, 'highScore');
-        console.log(start.events.onInputDown);
 
+        //start Button
+        const start_btn = game.add.button(0, game.world.centerY-38, 'start', ()=>{game.state.start('level1')});
+        //High Score Button
+        const highScore_btn = game.add.button(0, game.world.centerY+32, 'highScore', ()=>{game.state.start('highScore')});
         // game.add.plugin(Phaser.Plugin.Inspector);
+
+        //Enter Fullscreen
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        game.input.onDown.add(gofull, this);
+
 
     },
 
     update: function() {
-      // if (game.input.activePointer.isDown) {
+      // if (start.events.onInputDown) {
       //   game.state.start('level1')
       // }
     }
-
 };
 
 
-
+function gofull() {
+  if (!game.scale.isFullScreen) {
+    game.scale.startFullScreen(false);
+  }
+}
 
 
 

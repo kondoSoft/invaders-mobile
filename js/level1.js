@@ -17,7 +17,7 @@ var scoreText, scoreString;
 var level1 = {
   create: function() {
     //added background
-    starfield = game.add.tileSprite(0,0,screen.width, screen.height, 'starfield')
+    starfield = game.add.tileSprite(0,0,game.world.width, game.world.height, 'starfield')
 
     //our Bullets group
     bullets = game.add.group();
@@ -40,7 +40,7 @@ var level1 = {
     enemyBullets.setAll('checkWorldBounds', true);
 
     //create a player (the ship)
-    player = game.add.sprite(game.world.centerX-15, 670, 'ship');
+    player = game.add.sprite(game.world.centerX-15, game.world.centerY+302, 'ship');
     game.physics.enable(player, Phaser.Physics.ARCADE)
     player.body.collideWorldBounds = true;
 
@@ -62,9 +62,9 @@ var level1 = {
     //lives img
     for (var i = 0; i < 3; i++)
     {
-        var ship = lives.create(game.world.width - 95 + (30 * i), 50, 'ship');
-        ship.anchor.setTo(0.5, 0.5);
-        ship.alpha = 0.5;
+      var ship = lives.create(game.world.width - 95 + (30 * i), 50, 'ship');
+      ship.anchor.setTo(0.5, 0.5);
+      ship.alpha = 0.5;
     }
 
     //create cursors Keys
@@ -105,13 +105,15 @@ var level1 = {
       game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this)
 
     }
-
+    if (enemies.countLiving() < 1) {
+        createEnemies()
+    }
+    //Accelerometer movement
     if (window.DeviceMotionEvent != undefined && player.alive === true) {
       window.ondevicemotion = function(e) {
         player.body.velocity.x = e.accelerationIncludingGravity.x * -100;
-        e.accelerationIncludingGravity.y;
-        e.accelerationIncludingGravity.z;
       }
+
     }
     // // start gyroscope detection
     // gyro.startTracking(function(o) {
@@ -129,85 +131,91 @@ var level1 = {
 
 function enemyFires () {
 
-    //  Grab the first bullet we can from the pool
-    enemyBullet = enemyBullets.getFirstExists(false);
+  //  Grab the first bullet we can from the pool
+  enemyBullet = enemyBullets.getFirstExists(false);
 
-    livingEnemies.length=0;
+  livingEnemies.length=0;
 
-    enemies.forEachAlive(function(alien){
+  enemies.forEachAlive(function(alien){
 
-        // put every living enemy in an array
-        livingEnemies.push(alien);
-    });
+    // put every living enemy in an array
+    livingEnemies.push(alien);
+  });
 
 
-    if (enemyBullet && livingEnemies.length > 0)
-    {
+  if (enemyBullet && livingEnemies.length > 0)
+  {
 
-        var random=game.rnd.integerInRange(0,livingEnemies.length-1);
+    var random=game.rnd.integerInRange(0,livingEnemies.length-1);
 
-        // randomly select one of them
-        var shooter=livingEnemies[random];
-        // And fire the bullet from this enemy
-        enemyBullet.reset(shooter.body.x, shooter.body.y);
+    // randomly select one of them
+    var shooter=livingEnemies[random];
+    // And fire the bullet from this enemy
+    enemyBullet.reset(shooter.body.x, shooter.body.y);
 
-        game.physics.arcade.moveToObject(enemyBullet,player,120);
-        firingTimer = game.time.now + 2000;
+    game.physics.arcade.moveToObject(enemyBullet,player,120);
+    if (score > 4000) {
+      firingTimer = game.time.now + 1000;
+    } else if (score > 7000){
+      firingTimer = game.time.now + 700;
+    }else {
+      firingTimer = game.time.now + 2000;
     }
+  }
 
 }
 
 //fire bullets player
 
 function fireBullet () {
-    //  To avoid them being allowed to fire too fast we set a time limit
-    if (game.time.now > bulletTime)
-    {
-        //  Grab the first bullet we can from the pool
-        bullet = bullets.getFirstExists(false);
+  //  To avoid them being allowed to fire too fast we set a time limit
+  if (game.time.now > bulletTime)
+  {
+    //  Grab the first bullet we can from the pool
+    bullet = bullets.getFirstExists(false);
 
-        if (bullet)
-        {
-            //  And fire it
-            bullet.reset(player.x, player.y + 8);
-            bullet.body.velocity.y = -400;
-            bulletTime = game.time.now + 300;
-        }
+    if (bullet)
+    {
+      //  And fire it
+      bullet.reset(player.x, player.y + 8);
+      bullet.body.velocity.y = -400;
+      bulletTime = game.time.now + 300;
     }
+  }
 
 }
 
 function resetBullet (bullet) {
 
-    //  Called if the bullet goes out of the screen
-    bullet.kill();
+  //  Called if the bullet goes out of the screen
+  bullet.kill();
 
 }
 
 //create enemies
 function createEnemies () {
 
-    for (var y = 0; y < 5; y++)
+  for (var y = 0; y < 5; y++)
+  {
+    for (var x = 0; x < 6; x++)
     {
-        for (var x = 0; x < 6; x++)
-        {
-            var alien = enemies.create(x * 48, y * 50, 'enemy');
-            alien.anchor.setTo(0.5, 0.5);
-            alien.animations.add('fly', [ 0, 1], 2, true);
-            alien.animations.add('explode', [2], 1, true);
-            alien.play('fly');
-            alien.body.moves = false;
-        }
+      var alien = enemies.create(x * 48, y * 50, 'enemy');
+      alien.anchor.setTo(0.5, 0.5);
+      alien.animations.add('fly', [ 0, 1], 2, true);
+      alien.animations.add('explode', [2], 1, true);
+      alien.play('fly');
+      alien.body.moves = false;
     }
+  }
 
-    enemies.x = 30;
-    enemies.y = 100;
+  enemies.x = 30;
+  enemies.y = 100;
 
-    //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
-    var tween = game.add.tween(enemies).to( { x: 150 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+  //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
+  var tween = game.add.tween(enemies).to( { x: game.world.centerX/2 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
-    //  When the tween loops it calls descend
-    tween.onLoop.add(()=>enemies.y+=10, this);
+  //  When the tween loops it calls descend
+  tween.onLoop.add(()=>enemies.y+=10, this);
 }
 
 function collisionHandler (bullet, enemy) {
@@ -233,11 +241,24 @@ function collisionHandler (bullet, enemy) {
 }
 
 
-function enemyHitsPlayer(bullet, player) {
+function enemyHitsPlayer(player, bullet) {
   bullet.kill();
   player.kill();
 
-  gyro.stopTracking()
-  game.state.start('highScore');
+  setTimeout(function () {
+    player.revive()
+    console.log('revive');
+  }, 500);
 
+  let live = lives.getFirstAlive();
+
+  if (live) live.kill()
+
+  if (lives.countLiving() < 1)
+  {
+    player.kill();
+    // enemyBullets.callAll('kill');
+
+    game.state.start('highScore');
+  }
 }
