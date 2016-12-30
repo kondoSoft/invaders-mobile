@@ -12,10 +12,15 @@ var livingEnemies = [];
 var starfield;
 var firingTimer = 0;
 var scoreText, scoreString;
-
+var music;
 
 var level1 = {
   create: function() {
+    //background music
+    music = document.getElementById('music')
+    music.loop = true;
+    music.play();
+
     //added background
     starfield = game.add.tileSprite(0,0,game.world.width, game.world.height, 'starfield')
 
@@ -130,7 +135,9 @@ var level1 = {
 // enemy fire
 
 function enemyFires () {
-
+  let fireSound = document.getElementById('laser2')
+  fireSound.volume = 0.7;
+  fireSound.play();
   //  Grab the first bullet we can from the pool
   enemyBullet = enemyBullets.getFirstExists(false);
 
@@ -170,6 +177,10 @@ function enemyFires () {
 //fire bullets player
 
 function fireBullet () {
+  let fireSound = document.getElementById('laser1')
+  fireSound.volume = 0.8;
+  fireSound.play();
+
   //  To avoid them being allowed to fire too fast we set a time limit
   if (game.time.now > bulletTime)
   {
@@ -221,6 +232,10 @@ function createEnemies () {
 }
 
 function collisionHandler (bullet, enemy) {
+  let explosionSound = document.getElementById('explosion2')
+  explosionSound.load();
+  explosionSound.volume = 0.3;
+  explosionSound.play();
   enemy.play('explode')
   bullet.kill()
   setTimeout(function () {
@@ -244,12 +259,14 @@ function collisionHandler (bullet, enemy) {
 
 
 function enemyHitsPlayer(player, bullet) {
+  let explosion = document.getElementById('explosion1')
+  explosion.volume = 0.8;
+  explosion.play();
   bullet.kill();
   player.kill();
 
   setTimeout(function () {
     player.revive()
-    console.log('revive');
   }, 500);
 
   let live = lives.getFirstAlive();
@@ -258,6 +275,7 @@ function enemyHitsPlayer(player, bullet) {
 
   if (lives.countLiving() < 1)
   {
+    music.load()
     player.kill();
     // enemyBullets.callAll('kill');
 
