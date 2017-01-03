@@ -26,6 +26,11 @@ var loadState = {
 
         //Load your sounds, efx, music...
         //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
+        game.load.audio('laser1', 'assets/sound/laser4.wav');
+        game.load.audio('laser2', 'assets/sound/laser5.wav');
+        game.load.audio('music', 'assets/sound/high tech lab.ogg');
+        game.load.audio('explosion2', 'assets/sound/Explosion_02.wav');
+        game.load.audio('explosion1', 'assets/sound/Explosion.wav')
 
         //Load your data, JSON, Querys...
         //Example: game.load.json('version', 'http://phaser.io/version.json');
