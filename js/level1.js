@@ -12,14 +12,27 @@ var livingEnemies = [];
 var starfield;
 var firingTimer = 0;
 var scoreText, scoreString;
+//sounds
 var music;
+var laser_enemy, laser_player;
+var explosion_player, explosion_enemy;
 
 var level1 = {
   create: function() {
     //background music
-    music = document.getElementById('music')
-    music.loop = true;
-    music.play();
+    music = game.add.audio('music');
+    music.play()
+    //added sounds
+    //shot sounds
+    laser_enemy = game.add.audio('laser2');
+    laser_enemy.volume = 0.7;
+    laser_player = game.add.audio('laser1');
+    laser_player.volume = 0.8;
+    //explosion sounds
+    explosion_player = game.add.audio('explosion1');
+    explosion_player.volume = 0.8;
+    explosion_enemy = game.add.audio('explosion2');
+    explosion_enemy.volume = 0.3;
 
     //added background
     starfield = game.add.tileSprite(0,0,game.world.width, game.world.height, 'starfield')
@@ -135,9 +148,6 @@ var level1 = {
 // enemy fire
 
 function enemyFires () {
-  let fireSound = document.getElementById('laser2')
-  fireSound.volume = 0.7;
-  fireSound.play();
   //  Grab the first bullet we can from the pool
   enemyBullet = enemyBullets.getFirstExists(false);
 
@@ -159,14 +169,15 @@ function enemyFires () {
     var shooter=livingEnemies[random];
     // And fire the bullet from this enemy
     enemyBullet.reset(shooter.body.x, shooter.body.y);
-
+    //play sound
+    laser_enemy.play()
     game.physics.arcade.moveToObject(enemyBullet,player,120);
     if (score > 4000) {
       firingTimer = game.time.now + 1000;
     } else if (score > 7000){
       firingTimer = game.time.now + 700;
     } else if (score > 10000){
-      firingTimer = game.time.now + 400;
+      firingTimer = game.time.now + 300;
     }else {
       firingTimer = game.time.now + 2000;
     }
@@ -177,10 +188,6 @@ function enemyFires () {
 //fire bullets player
 
 function fireBullet () {
-  let fireSound = document.getElementById('laser1')
-  fireSound.volume = 0.8;
-  fireSound.play();
-
   //  To avoid them being allowed to fire too fast we set a time limit
   if (game.time.now > bulletTime)
   {
@@ -193,6 +200,8 @@ function fireBullet () {
       bullet.reset(player.x, player.y + 8);
       bullet.body.velocity.y = -400;
       bulletTime = game.time.now + 300;
+      //play sound
+      laser_player.play();
     }
   }
 
@@ -232,10 +241,8 @@ function createEnemies () {
 }
 
 function collisionHandler (bullet, enemy) {
-  let explosionSound = document.getElementById('explosion2')
-  explosionSound.load();
-  explosionSound.volume = 0.3;
-  explosionSound.play();
+  explosion_enemy.play();
+
   enemy.play('explode')
   bullet.kill()
   setTimeout(function () {
@@ -247,21 +254,11 @@ function collisionHandler (bullet, enemy) {
   score += 20;
   scoreText.text = scoreString + score
 
-
-  // if (enemy.countLiving() == 0) {
-  //   score += 1000;
-  //   scoreText.text = scoreString + score;
-  //
-  //   enemyBullets.callAll('kill', this);
-  //
-  // }
 }
 
 
 function enemyHitsPlayer(player, bullet) {
-  let explosion = document.getElementById('explosion1')
-  explosion.volume = 0.8;
-  explosion.play();
+  explosion_player.play();
   bullet.kill();
   player.kill();
 
@@ -275,7 +272,7 @@ function enemyHitsPlayer(player, bullet) {
 
   if (lives.countLiving() < 1)
   {
-    music.load()
+    music.pause();
     player.kill();
     // enemyBullets.callAll('kill');
 

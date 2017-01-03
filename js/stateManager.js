@@ -2,6 +2,7 @@ var w = screen.width,
   h = screen.height;
 
 console.log('W', w, 'H', h);
+// alert(w + ' ' + h)
 
 // alert('W: ' + w + " " + 'H: ' + h)
 /*
