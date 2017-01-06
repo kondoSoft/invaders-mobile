@@ -72,17 +72,17 @@ var level1 = {
 
     //  The score
     scoreString = 'Score : ';
-    scoreText = game.add.text(10, 10, scoreString + score, { font: '28px Courier', fill: '#fff' });
+    scoreText = game.add.text(10, 10, scoreString + score, { font: '10px press_start_2pregular', fill: '#fff' });
 
     //  Lives group
     lives = game.add.group();
-    game.add.text(game.world.width - 100, 10, 'Lives', { font: '28px Courier', fill: '#fff' });
+    game.add.text(game.world.centerX, 10, 'Lives', { font: '10px press_start_2pregular', fill: '#fff' });
 
 
     //lives img
     for (var i = 0; i < 3; i++)
     {
-      var ship = lives.create(game.world.width - 95 + (30 * i), 50, 'ship');
+      var ship = lives.create(game.world.width - 90 + (30 * i), 15, 'ship');
       ship.anchor.setTo(0.5, 0.5);
       ship.alpha = 0.5;
     }

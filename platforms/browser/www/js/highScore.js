@@ -1,14 +1,18 @@
 var highScore = {
 
     create: function () {
-      // var name = prompt('Cual es tu nombre');
-      // localStorage.setItem(name)
-      this.text = game.add.text(game.world.centerX-100, game.world.centerY, 'High Score')
+      if (score > 0) {
+        let name = prompt('Enter Your Name');
+        localStorage.setItem(name, score);
+      }
+      this.text = game.add.text(game.world.centerX - 135 , 20, 'High Score')
       this.text.font = 'press_start_2pregular';
-      this.text.size = 40;
       this.text.fill = '#fff';
+      Object.keys(localStorage).map((name, index)=>{
+        game.add.text(15, 80 + (index * 30), name, {font:'15px press_start_2pregular', align:'center', fill: '#fff'})
+        game.add.text(game.world.centerX+50, 80 + (index * 30), localStorage[name], {font:'15px press_start_2pregular', align:'center', fill: '#fff'})
+      })
 
-      this.record = game.add.text(game.world.centerX - 50, game.world.centerY + 50, score, {font:'40px arial', align:'center', fill: '#fff'})
       this.enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     },
 
