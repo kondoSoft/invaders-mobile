@@ -11,9 +11,7 @@ var loadState = {
     var loadingLabel = game.add.text(80, 150, 'loading...', {font: '30px Courier', fill: '#fff'});
 
     //Load your images, spritesheets, bitmaps...
-    game.load.image('boiler-logo', 'assets/img/boilerplate-logo.png');
-    game.load.image('kondo-logo', 'assets/img/KONDO-LOGO-copy.png');
-    game.load.image('ship', 'assets/img/nave 4.png');
+    //background game 
     game.load.image('starfield', 'assets/img/campo_de_estrellas.png');
     // homescreen background
     game.load.image('background-414x736', 'assets/img/menú inicio/Inicio_414x736.png');
@@ -22,10 +20,10 @@ var loadState = {
     game.load.image('background-320x568', 'assets/img/menú inicio/Inicio_320x568.png');
 
 
-
+    //buttons
     game.load.image('start', 'assets/img/start.png');
     game.load.image('highScore', 'assets/img/hight score.png');
-
+    //sprites
     game.load.spritesheet('bala', 'assets/img/balas/balas_1.png', 15, 15);
     game.load.spritesheet('balaEnemigo', 'assets/img/balas/balas_4.png', 15, 15);
     game.load.spritesheet('enemy', 'assets/img/invader.png', 45, 36 );

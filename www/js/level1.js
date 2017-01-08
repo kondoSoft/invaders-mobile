@@ -21,6 +21,7 @@ var level1 = {
   create: function() {
     //background music
     music = game.add.audio('music');
+    music.loop = true;
     music.play()
     //added sounds
     //shot sounds
@@ -61,8 +62,10 @@ var level1 = {
     player = game.add.sprite(game.world.centerX-15, game.world.centerY+250, 'player');
     game.physics.enable(player, Phaser.Physics.ARCADE)
     player.body.collideWorldBounds = true;
+    console.log();
     player.animations.add('alive', [0], 1, true);
     player.animations.add('dead-player', [2], 1, true);
+
 
     //Create a enemy group
     enemies = game.add.group()
@@ -229,15 +232,18 @@ function createEnemies () {
       alien.animations.add('fly', [ 0, 1], 2, true);
       alien.animations.add('explode', [2], 1, true);
       alien.play('fly');
+      game.physics.enable(alien, Phaser.Physics.ARCADE)
+      alien.body.collideWorldBounds = true;
       alien.body.moves = false;
     }
   }
 
   enemies.x = 30;
   enemies.y = 100;
-
+  let posX = (game.world.width < 360)? game.world.centerX/2-35 : game.world.centerX/2;
+  let vel = (game.world.width < 360)? 600: 2000;
   //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
-  var tween = game.add.tween(enemies).to( { x: game.world.centerX/2 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+  var tween = game.add.tween(enemies).to( { x: posX }, vel , Phaser.Easing.Linear.None, true, 0, 1000, true);
 
   //  When the tween loops it calls descend
   tween.onLoop.add(()=>enemies.y+=10, this);
@@ -269,6 +275,7 @@ function enemyHitsPlayer(player, bullet) {
     player.kill();
   }, 150);
   setTimeout(function () {
+    player.x = game.world.centerX-15;
     player.revive()
     player.play('alive')
 

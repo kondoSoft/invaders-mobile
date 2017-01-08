@@ -1,8 +1,7 @@
 var menuState = {
   create: function () {
-    var background
-    //384x640
-    // game.add.plugin(Phaser.Plugin.Debug);
+    //add dinamic background
+    var background;
     var width = screen.width;
     var height =  screen.height;
     if(width < 414 && width >= 384 && height < 736 && height >= 640){
