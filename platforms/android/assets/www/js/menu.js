@@ -21,7 +21,9 @@ var menuState = {
     //start Button
     const start_btn = game.add.button(0, game.world.centerY-38, 'start', ()=>{game.state.start('level1')});
     //High Score Button
-    const highScore_btn = game.add.button(0, game.world.centerY+32, 'highScore', ()=>{game.state.start('highScore')});
+    if (localStorage.length != 0) {
+      const highScore_btn = game.add.button(0, game.world.centerY+32, 'highScore', ()=>{game.state.start('highScore')});
+    }
     // game.add.plugin(Phaser.Plugin.Inspector);
 
     //Enter Fullscreen

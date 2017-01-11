@@ -75,17 +75,17 @@ var level1 = {
 
     //  The score
     scoreString = 'Score : ';
-    scoreText = game.add.text(10, 10, scoreString + score, { font: '10px press_start_2pregular', fill: '#fff' });
+    scoreText = game.add.text(10, 25, scoreString + score, { font: '10px press_start_2pregular', fill: '#fff' });
 
     //  Lives group
     lives = game.add.group();
-    game.add.text(game.world.centerX, 10, 'Lives', { font: '10px press_start_2pregular', fill: '#fff' });
+    game.add.text(game.world.centerX, 25, 'Lives', { font: '10px press_start_2pregular', fill: '#fff' });
 
 
     //lives img
     for (var i = 0; i < 3; i++)
     {
-      var ship = lives.create(game.world.width - 90 + (30 * i), 15, 'ship');
+      var ship = lives.create(game.world.width - 90 + (30 * i), 30, 'ship');
       ship.anchor.setTo(0.5, 0.5);
       ship.alpha = 0.5;
     }
@@ -95,9 +95,7 @@ var level1 = {
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
     // setting gyroscope update frequency
-    gyro.frequency = 10;
-
-    console.log();
+    // gyro.frequency = 10;
 
   },
 

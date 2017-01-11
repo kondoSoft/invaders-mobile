@@ -8,10 +8,11 @@ var loadState = {
     In this case of loading, only text is placed...
     */
 
-    var loadingLabel = game.add.text(80, 150, 'loading...', {font: '30px Courier', fill: '#fff'});
+    var loadingLabel = game.add.text(80, 150, 'loading...', {font: '20px press_start_2pregular', fill: '#fff'});
 
     //Load your images, spritesheets, bitmaps...
-    //background game 
+    game.load.image('ship', 'assets/img/nave 4.png')
+    //background game
     game.load.image('starfield', 'assets/img/campo_de_estrellas.png');
     // homescreen background
     game.load.image('background-414x736', 'assets/img/menú inicio/Inicio_414x736.png');
