@@ -11,19 +11,8 @@ var w = window.innerWidth * window.devicePixelRatio,
 */
 //create a new Game Object
 var game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
-WebFontConfig = {
 
-  active: function(){
-    game.time.events.add(Phaser.Timer.SECOND, createText, this);
-  },
-  google:{
-    families: ['Revalia']
-  }
-}
 
-function preload(){
-  game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfonts.js')
-}
 //add all states
 game.state.add('boot', bootState);
 game.state.add('load', loadState);

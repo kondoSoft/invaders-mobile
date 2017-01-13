@@ -1,6 +1,7 @@
 var loadState = {
 
   preload: function () {
+    game.stage.disableVisibilityChange = true
 
     /*
     Load all game assets
@@ -32,6 +33,8 @@ var loadState = {
 
     //Load your sounds, efx, music...
     //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
+
+
     game.load.audio('laser1', 'assets/sound/laser4.wav');
     game.load.audio('laser2', 'assets/sound/laser5.wav');
     game.load.audio('music', 'assets/sound/high tech lab.ogg');

@@ -12,6 +12,9 @@ var livingEnemies = [];
 var starfield;
 var firingTimer = 0;
 var scoreText, scoreString;
+var waveCount = 1;
+var waveText;
+var acceleration = (navigator.userAgent.indexOf('iPhone') != -1) ? 100: -100;
 //sounds
 var music;
 var laser_enemy, laser_player;
@@ -59,10 +62,9 @@ var level1 = {
     enemyBullets.setAll('checkWorldBounds', true);
 
     //create a player (the ship)
-    player = game.add.sprite(game.world.centerX-15, game.world.centerY+250, 'player');
+    player = game.add.sprite(game.world.centerX-15, game.world.height - 100, 'player');
     game.physics.enable(player, Phaser.Physics.ARCADE)
     player.body.collideWorldBounds = true;
-    console.log();
     player.animations.add('alive', [0], 1, true);
     player.animations.add('dead-player', [2], 1, true);
 
@@ -75,17 +77,24 @@ var level1 = {
 
     //  The score
     scoreString = 'Score : ';
-    scoreText = game.add.text(10, 25, scoreString + score, { font: '10px press_start_2pregular', fill: '#fff' });
+    scoreText = game.add.text(10, game.world.height-25, scoreString + score, { font: '10px press_start_2pregular', fill: '#fff' });
 
     //  Lives group
     lives = game.add.group();
-    game.add.text(game.world.centerX, 25, 'Lives', { font: '10px press_start_2pregular', fill: '#fff' });
+    game.add.text(game.world.centerX, game.world.height-25, 'Lives', { font: '10px press_start_2pregular', fill: '#fff' });
+
+    //wave text
+    waveText = game.add.text(game.world.centerX-50, game.world.centerY, 'Wave ' + waveCount, { font: '20px press_start_2pregular', fill: '#fff' })
+    setTimeout(function () {
+      waveText.visible = false;
+
+    }, 1500);
 
 
     //lives img
     for (var i = 0; i < 3; i++)
     {
-      var ship = lives.create(game.world.width - 90 + (30 * i), 30, 'ship');
+      var ship = lives.create(game.world.width - 90 + (30 * i),game.world.height - 20, 'ship');
       ship.anchor.setTo(0.5, 0.5);
       ship.alpha = 0.5;
     }
@@ -127,13 +136,22 @@ var level1 = {
 
     }
     if (enemies.countLiving() < 1) {
+        player.x = game.world.centerX-15;
+        waveCount++;
+        enemyBullets.callAll('kill');
+        bullets.callAll('kill')
         createEnemies()
         score += 200;
+        waveText.text = 'Wave ' + waveCount;
+        waveText.visible = true;
+        setTimeout(function () {
+          waveText.visible = false;
+        }, 1500);
     }
     //Accelerometer movement
     if (window.DeviceMotionEvent != undefined && player.alive === true) {
       window.ondevicemotion = function(e) {
-        player.body.velocity.x = e.accelerationIncludingGravity.x * -100;
+        player.body.velocity.x = e.accelerationIncludingGravity.x * acceleration;
       }
 
     }
@@ -172,7 +190,7 @@ function enemyFires () {
     // randomly select one of them
     var shooter=livingEnemies[random];
     // And fire the bullet from this enemy
-    enemyBullet.reset(shooter.body.x, shooter.body.y);
+    enemyBullet.reset(shooter.body.x+20, shooter.body.y+20);
     //play sound
     laser_enemy.play()
     game.physics.arcade.moveToObject(enemyBullet,player,120);
@@ -237,9 +255,9 @@ function createEnemies () {
   }
 
   enemies.x = 30;
-  enemies.y = 100;
-  let posX = (game.world.width < 360)? game.world.centerX/2-35 : game.world.centerX/2;
-  let vel = (game.world.width < 360)? 600: 2000;
+  enemies.y = 40;
+  let posX = (game.world.width <= 360)? game.world.centerX/2-35 : game.world.centerX/2+30;
+  let vel = (game.world.width <= 360)? 600: 2000;
   //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
   var tween = game.add.tween(enemies).to( { x: posX }, vel , Phaser.Easing.Linear.None, true, 0, 1000, true);
 
@@ -263,11 +281,14 @@ function collisionHandler (bullet, enemy) {
 
 }
 
-
+//
 function enemyHitsPlayer(player, bullet) {
   explosion_player.play();
   bullet.kill();
   player.play('dead-player');
+  enemyBullets.callAll('kill');
+  bullets.callAll('kill')
+
 
   setTimeout(function () {
     player.kill();
@@ -287,7 +308,6 @@ function enemyHitsPlayer(player, bullet) {
   {
     music.pause();
     player.play('dead-player')
-    // enemyBullets.callAll('kill');
     setTimeout(function () {
       player.kill();
       game.state.start('highScore');

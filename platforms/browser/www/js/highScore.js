@@ -42,6 +42,7 @@ var highScore = {
 function restart () {
   score = 0;
   game.state.start('menu')
+  waveCount = 1;
 
 }
 // get User name
@@ -83,7 +84,6 @@ function orderRecord(data){
 	}
   orderedNames.forEach((item, i)=>{
     var obj_scores = {}
-    console.log(item)
     obj_scores[item] = orderedScores[i];
     result.push(obj_scores);
   })
