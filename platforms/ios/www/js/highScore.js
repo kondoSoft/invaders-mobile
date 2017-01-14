@@ -1,6 +1,7 @@
 //array with score data
 var record = (!JSON.parse(localStorage.getItem('data')))? [] : JSON.parse(localStorage.getItem('data')).scores ;
 
+console.log(record);
 var highScore = {
   create: function () {
     //Local storage
@@ -10,6 +11,7 @@ var highScore = {
       datos[name] = score;
       record.push(datos)
       record = orderRecord(record)
+      if(record.length > 10) record.pop();
       const dataObj = {'scores': record};
       localStorage.setItem('data', JSON.stringify(dataObj));
     }

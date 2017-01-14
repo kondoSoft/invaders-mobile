@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.invasores.kondo.games" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.kondoSoft.invaders" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Kondo Invaders</name>
     <description>
       Shoot em up game, inspired by the classic game of Space Invaders.
@@ -19,7 +19,7 @@
     <icon density="mdpi" src="www/res/icon/android/Icon-mdpi.png" />
     <icon density="hdpi" src="www/res/icon/android/Icon-hdpi.png" />
     <icon density="xhdpi" src="www/res/icon/android/Icon-xhdpi.png" />
-    <icon density="xxhdpi" src="wwww/res/icon/android/Icon-xxhdpi.png" />
+    <icon density="xxhdpi" src="www/res/icon/android/Icon-xxhdpi.png" />
     <icon density="xxxhdpi" src="www/res/icon/android/Icon-xxxhdpi.png" />
     <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
     <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
@@ -27,12 +27,12 @@
     <splash density="land-xhdpi" src="www/res/screen/android/drawable-land-xhdpi-screen.png" />
     <splash density="land-xxhdpi" src="www/res/screen/android/drawable-land-xxhdpi-screen.png" />
     <splash density="land-xxxhdpi" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" />
-    <splash density="port-ldpi" src="www/res/screen/android/drawable-port-ldpi-screen.png" />
-    <splash density="port-mdpi" src="www/res/screen/android/drawable-port-mdpi-screen.png" />
-    <splash density="port-hdpi" src="www/res/screen/android/drawable-port-hdpi-screen.png" />
-    <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
-    <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
-    <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
+    <splash density="port-ldpi" src="www/res/screen/android/LDPI.png" />
+    <splash density="port-mdpi" src="www/res/screen/android/MDPI.png" />
+    <splash density="port-hdpi" src="www/res/screen/android/HDPI.png" />
+    <splash density="port-xhdpi" src="www/res/screen/android/XHDPI.png" />
+    <splash density="port-xxhdpi" src="www/res/screen/android/XXHDPI.png" />
+    <splash density="port-xxxhdpi" src="www/res/screen/android/XXXHDPI.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="DisallowOverscroll" value="true" />
