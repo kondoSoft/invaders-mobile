@@ -1,4 +1,3 @@
-console.log('Se cargo el boot');
 var bootState = {
 
     create: function () {

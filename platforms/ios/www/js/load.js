@@ -1,4 +1,3 @@
-console.log('se cargo el LOAD');
 var loadState = {
 
   preload: function () {
@@ -38,7 +37,7 @@ var loadState = {
 
     game.load.audio('laser1', 'assets/sound/laser4.wav');
     game.load.audio('laser2', 'assets/sound/laser5.wav');
-    game.load.audio('music', 'assets/sound/high tech lab.ogg');
+    game.load.audio('music', 'assets/sound/high tech lab.wav');
     game.load.audio('explosion2', 'assets/sound/Explosion_02.wav');
     game.load.audio('explosion1', 'assets/sound/Explosion.wav')
 
