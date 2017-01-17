@@ -53,7 +53,7 @@ function getName() {
   name = (name == null || name == '' )? getName(): name;
   return name;
 }
-
+// order Score 
 function orderRecord(data){
 	var arrScores = []
 	var arrNames = []

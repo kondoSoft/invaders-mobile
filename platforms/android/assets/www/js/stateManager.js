@@ -1,3 +1,4 @@
+var game;
 var w = screen.width,
   h = screen.height;
 
@@ -10,7 +11,11 @@ var w = window.innerWidth * window.devicePixelRatio,
     h = window.innerHeight * window.devicePixelRatio;
 */
 //create a new Game Object
-var game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
+if (navigator.userAgent.toLowerCase().indexOf('chrome') != -1) {
+  game = new Phaser.Game(w, h, Phaser.CANVAS, 'gameContainer');  
+}else {
+  game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
+}
 
 
 //add all states
