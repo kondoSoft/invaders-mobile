@@ -15,6 +15,7 @@ var scoreText, scoreString;
 var waveCount = 1;
 var waveText;
 var acceleration = (navigator.userAgent.indexOf('iPhone') != -1) ? 100: -100;
+var random;
 //sounds
 var music;
 var laser_enemy, laser_player;
@@ -22,6 +23,7 @@ var explosion_player, explosion_enemy;
 
 var level1 = {
   create: function() {
+    createRandom()
     //background music
     music = game.add.audio('music');
     music.loop = true;
@@ -39,7 +41,19 @@ var level1 = {
     explosion_enemy.volume = 0.3;
 
     //added background
+    this.scaleRandom = game.rnd.realInRange(1,5);
     starfield = game.add.tileSprite(0,0,game.world.width, game.world.height, 'starfield')
+    this.planet1 = game.add.sprite(game.world.randomX,-250,'planet1');
+    this.planet1.scale.setTo(this.scaleRandom,this.scaleRandom)
+
+    this.planet2 = game.add.sprite(game.world.randomX, -250, 'planet2');
+    this.planet2.scale.setTo(this.scaleRandom,this.scaleRandom);
+
+    this.comet = game.add.sprite(game.world.randomX, -250, 'comet');
+    this.comet.scale.setTo(this.scaleRandom,this.scaleRandom);
+
+    this.galaxy = game.add.sprite(game.world.randomX, -250, 'galaxy');
+    this.galaxy.scale.setTo(this.scaleRandom,this.scaleRandom);
 
     //our Bullets group
     bullets = game.add.group();
@@ -111,6 +125,42 @@ var level1 = {
   update: function () {
     // scroll the background
     starfield.tilePosition.y +=2;
+    //planets and galaxy scroll
+    var vel;
+    if (random > 0 && random < 2) {
+      vel = (this.planet1.scale.x >=1 && this.planet1.scale.x <= 2)? 1: 0.5;
+      this.planet1.y += vel;
+      if (this.planet1.y > game.world.height + 100) {
+        this.planet1.y = -200;
+        this.planet1.x = random * 50
+        createRandom(this.planet1)
+      }
+    }else if(random > 1 && random < 3){
+      vel = (this.planet2.scale.x >=1 && this.planet2.scale.x <= 2)? 1: 0.6;
+      this.planet2.y += vel;
+      if (this.planet2.y > game.world.height + 100) {
+        this.planet2.y = -200;
+        this.planet2.x = random * 50
+        createRandom(this.planet2)
+      }
+    }else if (random > 2 && random < 4) {
+      vel = (this.comet.scale.x >=1 && this.comet.scale.x <= 2)? 1: 0.5;
+      this.comet.y += vel;
+      this.comet.x -= 0.5
+      if (this.comet.x <= -100 ) {
+        createRandom(this.comet)
+        this.comet.y = -250
+        this.comet.x = random * 80;
+      }
+    }else if (random > 3 && random < 5) {
+      vel = (this.galaxy.scale.x >=1 && this.galaxy.scale.x <= 2)? 1: 0.5;
+      this.galaxy.y += vel;
+      if (this.galaxy.y > game.world.height + 100) {
+        this.galaxy.y = -200;
+        this.galaxy.x = random * 50;
+        createRandom(this.galaxy);
+      }
+    }
 
     //moving the player
     if (player.alive) {
@@ -314,4 +364,12 @@ function enemyHitsPlayer(player, bullet) {
 
     }, 150);
   }
+}
+
+function createRandom(element){
+    random = game.rnd.realInRange(1,5);
+    level1.scaleRandom = game.rnd.realInRange(1,5);
+    if (element) {
+      element.scale.setTo(level1.scaleRandom, level1.scaleRandom)
+    }
 }

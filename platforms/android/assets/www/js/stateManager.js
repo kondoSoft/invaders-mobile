@@ -1,8 +1,6 @@
 var w = screen.width,
   h = screen.height;
 
-console.log('W', w, 'H', h);
-
 /*
 For Fullscreen put this code:
 

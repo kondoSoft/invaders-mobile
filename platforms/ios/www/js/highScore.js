@@ -1,7 +1,6 @@
 //array with score data
 var record = (!JSON.parse(localStorage.getItem('data')))? [] : JSON.parse(localStorage.getItem('data')).scores ;
 
-console.log(record);
 var highScore = {
   create: function () {
     //Local storage

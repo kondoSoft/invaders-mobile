@@ -15,6 +15,10 @@ var loadState = {
     game.load.image('ship', 'assets/img/nave 4.png')
     //background game
     game.load.image('starfield', 'assets/img/campo_de_estrellas.png');
+    game.load.image('planet1', 'assets/img/Planets/planeta.png');
+    game.load.image('planet2', 'assets/img/Planets/universo.png');
+    game.load.image('comet', 'assets/img/Planets/cometa.png');
+    game.load.image('galaxy', 'assets/img/Planets/galaxy.png');
     // homescreen background
     game.load.image('background-414x736', 'assets/img/menú inicio/Inicio_414x736.png');
     game.load.image('background-384x640', 'assets/img/menú inicio/Inicio_384x640.png');
