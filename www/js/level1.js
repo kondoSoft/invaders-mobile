@@ -52,7 +52,7 @@ var level1 = {
     this.comet = game.add.sprite(game.world.randomX, -250, 'comet');
     this.comet.scale.setTo(this.scaleRandom,this.scaleRandom);
 
-    this.galaxy = game.add.sprite(game.world.randomX, -250, 'galaxy');
+    this.galaxy = game.add.sprite(game.world.randomX, -300, 'galaxy');
     this.galaxy.scale.setTo(this.scaleRandom,this.scaleRandom);
 
     //our Bullets group
@@ -128,23 +128,23 @@ var level1 = {
     //planets and galaxy scroll
     var vel;
     if (random > 0 && random < 2) {
-      vel = (this.planet1.scale.x >=1 && this.planet1.scale.x <= 2)? 1: 0.5;
+      vel = (this.planet1.scale.x >=1 && this.planet1.scale.x <= 2)? 0.5: 1.1;
       this.planet1.y += vel;
       if (this.planet1.y > game.world.height + 100) {
-        this.planet1.y = -200;
+        this.planet1.y = -300;
         this.planet1.x = random * 50
         createRandom(this.planet1)
       }
     }else if(random > 1 && random < 3){
-      vel = (this.planet2.scale.x >=1 && this.planet2.scale.x <= 2)? 1: 0.6;
+      vel = (this.planet2.scale.x >=1 && this.planet2.scale.x <= 2)? 0.5: 1.1;
       this.planet2.y += vel;
       if (this.planet2.y > game.world.height + 100) {
-        this.planet2.y = -200;
+        this.planet2.y = -300;
         this.planet2.x = random * 50
         createRandom(this.planet2)
       }
     }else if (random > 2 && random < 4) {
-      vel = (this.comet.scale.x >=1 && this.comet.scale.x <= 2)? 1: 0.5;
+      vel = (this.comet.scale.x >=1 && this.comet.scale.x <= 2)? 0.5: 1.1;
       this.comet.y += vel;
       this.comet.x -= 0.5
       if (this.comet.x <= -100 ) {
@@ -153,10 +153,10 @@ var level1 = {
         this.comet.x = random * 80;
       }
     }else if (random > 3 && random < 5) {
-      vel = (this.galaxy.scale.x >=1 && this.galaxy.scale.x <= 2)? 1: 0.5;
+      vel = (this.galaxy.scale.x >=1 && this.galaxy.scale.x <= 2)? 0.5: 1.1;
       this.galaxy.y += vel;
       if (this.galaxy.y > game.world.height + 100) {
-        this.galaxy.y = -200;
+        this.galaxy.y = -300;
         this.galaxy.x = random * 50;
         createRandom(this.galaxy);
       }
@@ -192,6 +192,7 @@ var level1 = {
         bullets.callAll('kill')
         createEnemies()
         score += 200;
+        scoreText.text = scoreString + score;
         waveText.text = 'Wave ' + waveCount;
         waveText.visible = true;
         setTimeout(function () {
@@ -244,12 +245,18 @@ function enemyFires () {
     //play sound
     laser_enemy.play()
     game.physics.arcade.moveToObject(enemyBullet,player,120);
-    if (score > 4000 && score < 7000) {
+    if (waveCount >= 5 && waveCount < 10) {
+      firingTimer = game.time.now + 1500;
+    } else if (waveCount >= 10 && waveCount < 15){
       firingTimer = game.time.now + 1000;
-    } else if (score > 7000 && score < 15000){
-      firingTimer = game.time.now + 700;
-    } else if (score > 15000){
+    } else if (waveCount >= 15 && waveCount < 20){
+      firingTimer = game.time.now + 800;
+    }else if (waveCount >= 20 && waveCount < 25){
+      firingTimer = game.time.now + 600;
+    }else if (waveCount >= 25 && waveCount < 35) {
       firingTimer = game.time.now + 400;
+    }else if (waveCount >= 35) {
+      firingTimer = game.time.now + 300;
     }else {
       firingTimer = game.time.now + 2000;
     }

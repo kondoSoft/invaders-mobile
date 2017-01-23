@@ -32,8 +32,8 @@ var loadState = {
     //sprites
     game.load.spritesheet('bala', 'assets/img/balas/balas_1.png', 15, 15);
     game.load.spritesheet('balaEnemigo', 'assets/img/balas/balas_4.png', 15, 15);
-    game.load.spritesheet('enemy', 'assets/img/invader.png', 45, 36 );
-    game.load.spritesheet('player', 'assets/img/nave4_explosión.png', 30, 15);
+    game.load.spritesheet('enemy', 'assets/img/invader.png', 44, 36 );
+    game.load.spritesheet('player', 'assets/img/nave4_explosión.png', 29, 14);
 
     //Load your sounds, efx, music...
     //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
