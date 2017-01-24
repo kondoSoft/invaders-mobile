@@ -1,8 +1,6 @@
 var loadState = {
 
   preload: function () {
-    game.stage.disableVisibilityChange = true
-
     /*
     Load all game assets
     Place your load bar, some messages.

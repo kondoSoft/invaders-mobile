@@ -295,12 +295,12 @@ function resetBullet (bullet) {
 
 //create enemies
 function createEnemies () {
-
+  var cantX = (game.world.width <= 360)? 5:6;
   for (var y = 0; y < 5; y++)
   {
-    for (var x = 0; x < 6; x++)
+    for (var x = 0; x < cantX; x++)
     {
-      var alien = enemies.create(x * 50, y * 50, 'enemy');
+      var alien = enemies.create(x * 55, y * 50, 'enemy');
       alien.anchor.setTo(0.5, 0.5);
       alien.animations.add('fly', [ 0, 1], 2, true);
       alien.animations.add('explode', [2], 1, true);
@@ -313,13 +313,13 @@ function createEnemies () {
 
   enemies.x = 30;
   enemies.y = 40;
-  let posX = (game.world.width <= 360)? game.world.centerX/2-35 : game.world.centerX/2+30;
-  let vel = (game.world.width <= 360)? 600: 2000;
+  let posX = (game.world.width < 360)? game.world.centerX/2-20 : game.world.centerX/2;
+  let vel = (game.world.width < 360)? 1000: 2000;
   //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
   var tween = game.add.tween(enemies).to( { x: posX }, vel , Phaser.Easing.Linear.None, true, 0, 1000, true);
 
   //  When the tween loops it calls descend
-  tween.onLoop.add(()=>enemies.y+=10, this);
+  // tween.onLoop.add(()=>enemies.y+=10, this);
 }
 
 function collisionHandler (bullet, enemy) {
