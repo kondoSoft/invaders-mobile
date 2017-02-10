@@ -19,21 +19,31 @@ var menuState = {
     }
 
     //start Button
-    const start_btn = game.add.button(0, game.world.centerY-38, 'start', ()=>{game.state.start('level1')});
+    const start_btn = game.add.button(0, game.world.centerY, 'start', initGame);
     //High Score Button
     if (localStorage.length != 0) {
-      const highScore_btn = game.add.button(0, game.world.centerY+32, 'highScore', ()=>{game.state.start('highScore')});
+      const highScore_btn = game.add.button(0, game.world.centerY+65, 'highScore', initHighScore);
     }
     // game.add.plugin(Phaser.Plugin.Inspector);
 
     //Enter Fullscreen
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-    game.input.onDown.add(gofull, this);
+    // game.input.onDown.add(gofull, this);
 
 
   }
 };
 
+
+function initGame() {
+  gofull();
+  game.state.start('level1')
+}
+
+function initHighScore() {
+  gofull()
+  game.state.start('highScore')
+}
 
 function gofull() {
   if (!game.scale.isFullScreen) {

@@ -10,28 +10,28 @@ var loadState = {
     var loadingLabel = game.add.text(80, 150, 'loading...', {font: '20px press_start_2pregular', fill: '#fff'});
 
     //Load your images, spritesheets, bitmaps...
-    game.load.image('ship', 'assets/img/nave 4.png')
+    game.load.image('ship', 'assets/atack-of-trump/sombrero.png')
     //background game
-    game.load.image('starfield', 'assets/img/campo_de_estrellas.png');
-    game.load.image('planet1', 'assets/img/Planets/planeta.png');
-    game.load.image('planet2', 'assets/img/Planets/universo.png');
-    game.load.image('comet', 'assets/img/Planets/cometa.png');
-    game.load.image('galaxy', 'assets/img/Planets/galaxy.png');
+    game.load.image('starfield', 'assets/atack-of-trump/inicio/fondo.png');
+    // game.load.image('planet1', 'assets/img/Planets/planeta.png');
+    // game.load.image('planet2', 'assets/img/Planets/universo.png');
+    // game.load.image('comet', 'assets/img/Planets/cometa.png');
+    // game.load.image('galaxy', 'assets/img/Planets/galaxy.png');
     // homescreen background
-    game.load.image('background-414x736', 'assets/img/menú inicio/Inicio_414x736.png');
-    game.load.image('background-384x640', 'assets/img/menú inicio/Inicio_384x640.png');
-    game.load.image('background-360x640', 'assets/img/menú inicio/Inicio_360x640.png');
-    game.load.image('background-320x568', 'assets/img/menú inicio/Inicio_320x568.png');
+    game.load.image('background-414x736', 'assets/atack-of-trump/inicio/414x736.png');
+    game.load.image('background-384x640', 'assets/atack-of-trump/inicio/384x640.png');
+    game.load.image('background-360x640', 'assets/atack-of-trump/inicio/360x640.png');
+    game.load.image('background-320x568', 'assets/atack-of-trump/inicio/320x568.png');
 
 
     //buttons
     game.load.image('start', 'assets/img/start.png');
     game.load.image('highScore', 'assets/img/hight score.png');
     //sprites
-    game.load.spritesheet('bala', 'assets/img/balas/balas_1.png', 15, 15);
-    game.load.spritesheet('balaEnemigo', 'assets/img/balas/balas_4.png', 15, 15);
-    game.load.spritesheet('enemy', 'assets/img/invader.png', 44, 36 );
-    game.load.spritesheet('player', 'assets/img/nave4_explosión.png', 29, 14);
+    game.load.spritesheet('bala', 'assets/atack-of-trump/balas.png', 15, 15);
+    game.load.spritesheet('balaEnemigo', 'assets/atack-of-trump/ladrillo.png', 17, 16);
+    game.load.spritesheet('enemy', 'assets/atack-of-trump/trump.png', 34, 36 );
+    game.load.spritesheet('player', 'assets/atack-of-trump/sombrero.png', 29, 14);
 
     //Load your sounds, efx, music...
     //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
