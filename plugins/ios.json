@@ -1,0 +1,76 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.kondosoft.attackOfTrump"
+        }
+    }
+}

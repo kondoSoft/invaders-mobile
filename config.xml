@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.kondosoft.kondo-invaders" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Kondo Invaders</name>
+<widget id="com.kondosoft.attackOfTrump" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Attack of Trump</name>
     <description>
       A simple shoot em up like space invaders, our first published work as a game dev studio.
     </description>
-    <author email="info@kondosoft.com" href="http://kondosoft.com/kondo-invaders">
+    <author email="info@kondosoft.com" href="http://kondosoft.com/attack-of-trump">
         The Kondo soft team
     </author>
     <content src="index.html" />
@@ -61,4 +61,5 @@
     <plugin name="cordova-plugin-statusbar" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
+    <engine name="android" spec="~6.1.2" />
 </widget>
