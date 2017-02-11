@@ -37,11 +37,11 @@ var loadState = {
     //Example: game.load.audio('rockas', 'assets/snd/rockas.wav');
 
 
-    game.load.audio('laser1', 'assets/sound/laser4.wav');
-    game.load.audio('laser2', 'assets/sound/laser5.wav');
-    game.load.audio('music', 'assets/sound/high tech lab.wav');
-    game.load.audio('explosion2', 'assets/sound/Explosion_02.wav');
-    game.load.audio('explosion1', 'assets/sound/Explosion.wav')
+    game.load.audio('laser1', 'assets/atack-of-trump/sounds/NFF-throw-05.wav');
+    game.load.audio('laser2', 'assets/atack-of-trump/sounds/Spear Throw Sound Effect.mp3');
+    game.load.audio('music', 'assets/atack-of-trump/sounds/cucaracha.wav');
+    game.load.audio('explosion2', 'assets/atack-of-trump/sounds/NFF-boy-hmm.wav');
+    // game.load.audio('explosion1', 'assets/sound/Explosion.wav');
 
     //Load your data, JSON, Querys...
     //Example: game.load.json('version', 'http://phaser.io/version.json');

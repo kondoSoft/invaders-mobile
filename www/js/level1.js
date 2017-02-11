@@ -31,14 +31,13 @@ var level1 = {
     //added sounds
     //shot sounds
     laser_enemy = game.add.audio('laser2');
-    laser_enemy.volume = 0.7;
+    laser_enemy.volume = 1;
     laser_player = game.add.audio('laser1');
-    laser_player.volume = 0.8;
+    laser_player.volume = 0.5;
     //explosion sounds
-    explosion_player = game.add.audio('explosion1');
-    explosion_player.volume = 0.8;
+
     explosion_enemy = game.add.audio('explosion2');
-    explosion_enemy.volume = 0.3;
+    explosion_enemy.volume = 0.8;
 
     //added background
     this.scaleRandom = game.rnd.realInRange(1,5);
@@ -350,7 +349,6 @@ function collisionHandler (bullet, enemy) {
 
 //
 function enemyHitsPlayer(player, bullet) {
-  explosion_player.play();
   bullet.kill();
   // player.play('dead-player');
   enemyBullets.callAll('kill');
