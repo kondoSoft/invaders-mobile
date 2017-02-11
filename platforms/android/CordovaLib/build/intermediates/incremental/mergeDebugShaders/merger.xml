@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/hdh-2/Documents/Repositorios/attack-of-trump/platforms/android/CordovaLib/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/hdh-2/Documents/Repositorios/attack-of-trump/platforms/android/CordovaLib/src/debug/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/williams/Documents/Repositorios/attack-of-trump/platforms/android/CordovaLib/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/williams/Documents/Repositorios/attack-of-trump/platforms/android/CordovaLib/src/debug/shaders"/></dataSet></merger>
